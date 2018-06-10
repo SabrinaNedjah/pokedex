@@ -1,0 +1,39 @@
+{{ include('partials/header.twig') }}
+<div class="left-side">
+  <div class="lights">
+    <div class="blue-light-holder">
+      <div class="blue-light">
+      </div>
+    </div>
+    <div class="led-container">
+      <div class="red-light"></div>
+      <div class="yellow-light"></div>
+      <div class="green-light"></div>
+    </div>
+  </div>
+  <div class="main-module">
+    <div class="outer-screen">
+      <div class="inner-screen">
+       <img class="imgIntro" src="{{ base_url() }}/images/pokemon.png">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="right-side">
+  <div class="right-screen">   
+    <form method="GET" class="form">
+        <input class="search" type="search" name="search" placeholder="Essayez 'Nidorina'"  />
+        <input class="submit" type="submit" value="Valide"  />
+    </form>
+    <div class="list">
+        {% for _pokemon in pokemons %}
+            <div class="pokeList">
+                <a href="{{ path_for('description', { slug: _pokemon.slug }) }}">
+                    {{ _pokemon.name }} 
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+{{ include('partials/footer.twig') }}
